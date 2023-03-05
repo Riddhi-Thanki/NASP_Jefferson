@@ -1,0 +1,30 @@
+.plots-submenu {
+  width: 10rem;
+  position: absolute;
+  top: 67px;
+  list-style: none;
+  text-align: start;
+  z-index: 1;
+}
+
+.plots-submenu li {
+  background: #e2b842;
+  cursor: pointer;
+}
+
+.plots-submenu li a:hover {
+  background: #e2c77b;
+}
+
+.plots-submenu.clicked {
+  display: none;
+}
+
+.submenu-item {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: black !important;
+  padding: 16px;
+}

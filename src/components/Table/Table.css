@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+table {
+  background: #000000;
+  border-radius: 0.25em;
+  border-collapse: collapse;
+  margin: 1em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 5px;
+}
+th {
+  border-bottom: 1px solid #364043;
+  color: #e2b842;
+  font-weight: 600;
+  padding: 0.65em 1em;
+  text-align: left;
+}
+td {
+  color: #fff;
+  font-weight: 400;
+  padding: 0.65em 1em;
+  text-align: left;
+}
+
+tbody tr {
+  transition: background 0.25s ease;
+}
+tbody tr:hover {
+  background: rgb(40, 42, 42);
+}
+
+.button {
+  display: flex;
+  padding: 8px 10px;
+  background-color: #000000;
+  border: 0;
+  color: white;
+  font-weight: 900;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  float: right;
+}
+
+.button:hover {
+  background-color: #e2b842;
+  cursor: pointer;
+  color: #000000;
+}
