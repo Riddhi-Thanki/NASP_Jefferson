@@ -56,11 +56,11 @@ const SiteMap = () => {
         />
       </map>
       <img
-        className="image"
         src={SiteMapImage}
-        width="700"
-        heigth="650"
+        width="100%"
+        heigth="100%"
         useMap="#workmap"
+        alt="Site Map"
       ></img>
     </div>
   );

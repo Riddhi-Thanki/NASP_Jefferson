@@ -28,7 +28,7 @@ const Header = ({
     <Router>
       <nav className="header">
         <Link to={"/"} className="heading">
-          Forestry Data- Jefferson
+          USFS Jefferson: Plot 1
         </Link>
 
         <ul className="nav-items">
@@ -37,7 +37,7 @@ const Header = ({
               return (
                 <li
                   key={item.id}
-                  className={item.cName}
+                  className="nav-item"
                   onClick={() => setPlotsDropdown(!plotsDropdown)}
                   onMouseLeave={() => setPlotsDropdown(false)}
                 >
@@ -53,7 +53,7 @@ const Header = ({
               return (
                 <li
                   key={item.id}
-                  className={item.cName}
+                  className="nav-item"
                   onClick={() => setResourcesDropdown(!resourcesDropdown)}
                   onMouseLeave={() => setResourcesDropdown(false)}
                 >
@@ -70,20 +70,11 @@ const Header = ({
 
             if (item.title === "Mobile") {
               return (
-                <li
-                  key={item.id}
-                  className={item.cName}
-                  onClick={buttonClicked}
-                >
+                <li key={item.id} className="nav-item" onClick={buttonClicked}>
                   <Link to={item.path}>{item.title}</Link>
                 </li>
               );
             }
-            return (
-              <li key={item.id} className={item.cName}>
-                <Link to={item.path}>{item.title}</Link>
-              </li>
-            );
           })}
         </ul>
       </nav>

@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="logo">
-        <img className="logo" src={vtLogo} />
+        <img className="logo" src={vtLogo} alt="Virginia Tech Logo" />
       </div>
       {/* <div>
         <h4>

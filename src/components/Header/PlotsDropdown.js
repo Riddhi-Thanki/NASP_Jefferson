@@ -7,16 +7,13 @@ const PlotsDropdown = ({ setPlotState }) => {
   const [dropdown, setDropdown] = useState(false);
   return (
     <>
-      <ul
-        className={dropdown ? "plots-submenu clicked" : "plots-submenu"}
-        onClick={() => setDropdown(!dropdown)}
-      >
+      <ul className="plots-submenu" onClick={() => setDropdown(!dropdown)}>
         {plotsDropdown.map((item) => {
           return (
             <li key={item.id}>
               <Link
                 to={item.path}
-                className={item.cName}
+                className="submenu-item"
                 onClick={() => {
                   setDropdown(false);
                   setPlotState(item.id);

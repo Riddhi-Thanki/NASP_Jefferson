@@ -10,17 +10,14 @@ const ResourcesDropdown = ({ setTableState, tableState }) => {
   const [dropdown, setDropdown] = useState(false);
   return (
     <>
-      <ul
-        className={dropdown ? "plots-submenu clicked" : "plots-submenu"}
-        onClick={() => setDropdown(!dropdown)}
-      >
+      <ul className="plots-submenu" onClick={() => setDropdown(!dropdown)}>
         {resourcesDropdown.map((item) => {
           if (item.title === "Table") {
             return (
               <li key={item.id}>
                 <Link
                   to={item.path}
-                  className={item.cName}
+                  className="submenu-item"
                   onClick={() => {
                     setDropdown(false);
                     setTableState(!tableState);
@@ -38,7 +35,7 @@ const ResourcesDropdown = ({ setTableState, tableState }) => {
                   to={pdf}
                   target={"_blank"}
                   rel="noopener noreferrer"
-                  className={item.cName}
+                  className="submenu-item"
                   onClick={() => {
                     setDropdown(false);
                   }}
@@ -55,7 +52,7 @@ const ResourcesDropdown = ({ setTableState, tableState }) => {
                   to={aerialImage}
                   target={"_blank"}
                   rel="noopener noreferrer"
-                  className={item.cName}
+                  className="submenu-item"
                   onClick={() => {
                     setDropdown(false);
                   }}
@@ -73,7 +70,7 @@ const ResourcesDropdown = ({ setTableState, tableState }) => {
                   to={topoImage}
                   target={"_blank"}
                   rel="noopener noreferrer"
-                  className={item.cName}
+                  className="submenu-item"
                   onClick={() => {
                     setDropdown(false);
                   }}

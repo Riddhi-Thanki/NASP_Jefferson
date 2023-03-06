@@ -1,9 +1,7 @@
 .footer {
   display: flex;
-  flex: 1;
   background-color: #000000;
   color: white;
-  min-width: 20%;
   justify-content: space-between;
   align-items: center;
   padding: 2%;
@@ -12,5 +10,5 @@
 .logo {
   display: flex;
   justify-content: flex-start;
-  max-width: 200px;
+  max-width: 40%;
 }
