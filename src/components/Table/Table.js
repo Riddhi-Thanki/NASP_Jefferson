@@ -1,7 +1,14 @@
 import "./Table.css";
-import { data } from "./TableData";
+import { Data } from "../../Data/Data";
+import { AppContext } from "../../App";
+import { useContext } from "react";
 
-export default function Table({ tableState, setTableState }) {
+export default function Table() {
+  // *****************************
+  // * Getting states from App
+  // *****************************
+  const { plotId, tableState, setTableState } = useContext(AppContext);
+
   if (!tableState) {
     return;
   }
@@ -34,7 +41,7 @@ export default function Table({ tableState, setTableState }) {
           </tr>
         </thead>
         <tbody>
-          {data.map((row) => (
+          {Data[plotId].tableData.map((row) => (
             <tr key={row.treeNumber}>
               <td component="th" scope="row">
                 {row.treeNumber}

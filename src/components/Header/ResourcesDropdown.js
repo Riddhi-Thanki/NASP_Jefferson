@@ -1,22 +1,28 @@
-import React, { useState } from "react";
-import { resourcesDropdown } from "./NavItems";
+import React, { useState, useContext } from "react";
+import { resourcesDropdownItems } from "../../Data/Data";
 import { Link } from "react-router-dom";
 import "./DropdownItems.css";
-import pdf from "./asset/Jefferson_Exercise_Environmental_and_Soil_Report.pdf";
-import aerialImage from "./asset/Jefferson_Exercise_Plot_Stand_Map_Landscape_Aerial.jpg";
-import topoImage from "./asset/Jefferson_Exercise_Plot_Stand_Map_Landscape_Topo_Aerial.jpg";
+import { AppContext } from "../../App";
 
-const ResourcesDropdown = ({ setTableState, tableState }) => {
+const ResourcesDropdown = () => {
+  // *****************************
+  // * Getting states from App
+  // *****************************
+  const { tableState, setTableState } = useContext(AppContext);
+
+  // *****************************
+  // * Component States
+  // *****************************
   const [dropdown, setDropdown] = useState(false);
+
   return (
     <>
       <ul className="plots-submenu" onClick={() => setDropdown(!dropdown)}>
-        {resourcesDropdown.map((item) => {
+        {resourcesDropdownItems.map((item) => {
           if (item.title === "Table") {
             return (
               <li key={item.id}>
                 <Link
-                  to={item.path}
                   className="submenu-item"
                   onClick={() => {
                     setDropdown(false);
@@ -32,7 +38,7 @@ const ResourcesDropdown = ({ setTableState, tableState }) => {
             return (
               <li key={item.id}>
                 <Link
-                  to={pdf}
+                  to={item.file}
                   target={"_blank"}
                   rel="noopener noreferrer"
                   className="submenu-item"
@@ -49,7 +55,7 @@ const ResourcesDropdown = ({ setTableState, tableState }) => {
             return (
               <li key={item.id}>
                 <Link
-                  to={aerialImage}
+                  to={item.file}
                   target={"_blank"}
                   rel="noopener noreferrer"
                   className="submenu-item"
@@ -67,7 +73,7 @@ const ResourcesDropdown = ({ setTableState, tableState }) => {
             return (
               <li key={item.id}>
                 <Link
-                  to={topoImage}
+                  to={item.file}
                   target={"_blank"}
                   rel="noopener noreferrer"
                   className="submenu-item"

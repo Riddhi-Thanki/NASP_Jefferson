@@ -1,51 +1,76 @@
 import React from "react";
-import SiteMapImage from "./Jefferson_Exercise_Plot_Stand_Map_Close_Aerial.jpg";
+import { siteMapImage } from "../../Data/Data";
 import "./SiteMap.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { AppContext } from "../../App";
+import { useContext } from "react";
 
 const SiteMap = () => {
+  // *****************************
+  // * Getting states from App
+  // *****************************
+  const { setPlotId } = useContext(AppContext);
+
+  // *****************************
+  // * Functions
+  // *****************************
+  const handlePlotPointClick = (id) => {
+    setPlotId(id);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <Router>
-      <div className="image">
-        <Link to={"./Plot1"}>
-          <button className="point1 points"></button>
-        </Link>
-        <Link to={"./Plot1"}>
-          <button className="point2 points"></button>
-        </Link>
+    <div className="image">
+      <button
+        className="point1 points"
+        onClick={() => handlePlotPointClick(1)}
+      ></button>
 
-        <Link to={"./Plot1"}>
-          <button className="point3 points"></button>
-        </Link>
+      <button
+        className="point2 points"
+        onClick={() => handlePlotPointClick(2)}
+      ></button>
 
-        <Link to={"./Plot1"}>
-          <button className="point4 points"></button>
-        </Link>
-        <Link to={"./Plot1"}>
-          <button className="point5 points"></button>
-        </Link>
+      <button
+        className="point3 points"
+        onClick={() => handlePlotPointClick(3)}
+      ></button>
 
-        <Link to={"./Plot1"}>
-          <button className="point6 points"></button>
-        </Link>
+      <button
+        className="point4 points"
+        onClick={() => handlePlotPointClick(4)}
+      ></button>
 
-        <Link to={"./Plot1"}>
-          <button className="point7 points"></button>
-        </Link>
+      <button
+        className="point5 points"
+        onClick={() => handlePlotPointClick(5)}
+      ></button>
 
-        <Link to={"./Plot1"}>
-          <button className="point8 points"></button>
-        </Link>
+      <button
+        className="point6 points"
+        onClick={() => handlePlotPointClick(6)}
+      ></button>
 
-        <img
-          src={SiteMapImage}
-          width="100%"
-          heigth="100%"
-          useMap="#workmap"
-          alt="Site Map"
-        ></img>
-      </div>
-    </Router>
+      <button
+        className="point7 points"
+        onClick={() => handlePlotPointClick(7)}
+      ></button>
+
+      <button
+        className="point8 points"
+        onClick={() => handlePlotPointClick(8)}
+      ></button>
+
+      <img
+        src={siteMapImage}
+        width="100%"
+        heigth="100%"
+        useMap="#workmap"
+        alt="Site Map"
+      ></img>
+    </div>
   );
 };
 

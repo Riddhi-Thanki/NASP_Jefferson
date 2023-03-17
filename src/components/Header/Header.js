@@ -1,77 +1,86 @@
 import React from "react";
 import "./Header.css";
-import { useState } from "react";
-import { NavItems } from "./NavItems";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { directionDropdownItems, navItems } from "../../Data/Data";
+import { BrowserRouter as Router } from "react-router-dom";
 import PlotsDropdown from "./PlotsDropdown";
 import ResourcesDropdown from "./ResourcesDropdown";
+import { AppContext } from "../../App";
 
-const Header = ({
-  mobileView,
-  setMobileView,
-  tableState,
-  setPlotState,
-  setTableState,
-}) => {
-  const [plotsDropdown, setPlotsDropdown] = useState(false);
-  const [resourcesDropdown, setResourcesDropdown] = useState(false);
+const Header = () => {
+  // *****************************
+  // * Getting states from App
+  // *****************************
+  const { plotId, directionState, mobileView, setMobileView } =
+    useContext(AppContext);
 
-  const buttonClicked = () => {
+  // *****************************
+  // * Component States
+  // *****************************
+  const [showDirectionDropdown, setShowDirectionDropdown] = useState(false);
+  const [showResourcesDropdown, setShowResourcesDropdown] = useState(false);
+
+  // *****************************
+  // * Functions
+  // *****************************
+  const handleMobileButtonClick = () => {
     if (mobileView === "off") {
       setMobileView("on");
     } else {
       setMobileView("off");
     }
-    console.log(mobileView);
   };
+
   return (
     <Router>
       <nav className="header">
-        <Link to={"/"} className="heading">
-          USFS Jefferson: Plot 1
-        </Link>
+        <div className="heading">
+          USFS Jefferson: Plot {plotId} (
+          {directionDropdownItems[directionState].title})
+        </div>
 
         <ul className="nav-items">
-          {NavItems.map((item) => {
-            if (item.title === "Plots") {
+          {navItems.map((item) => {
+            if (item.id === 1) {
               return (
                 <li
                   key={item.id}
                   className="nav-item"
-                  onClick={() => setPlotsDropdown(!plotsDropdown)}
-                  onMouseLeave={() => setPlotsDropdown(false)}
+                  onClick={() =>
+                    setShowDirectionDropdown(!showDirectionDropdown)
+                  }
+                  onMouseLeave={() => setShowDirectionDropdown(false)}
                 >
-                  <Link to={item.path}>{item.title}</Link>
-                  {plotsDropdown && (
-                    <PlotsDropdown setPlotState={setPlotState} />
-                  )}
+                  <button>{item.title}</button>
+                  {showDirectionDropdown && <PlotsDropdown />}
                 </li>
               );
             }
 
-            if (item.title === "Resources") {
+            if (item.id === 2) {
               return (
                 <li
                   key={item.id}
                   className="nav-item"
-                  onClick={() => setResourcesDropdown(!resourcesDropdown)}
-                  onMouseLeave={() => setResourcesDropdown(false)}
+                  onClick={() =>
+                    setShowResourcesDropdown(!showResourcesDropdown)
+                  }
+                  onMouseLeave={() => setShowResourcesDropdown(false)}
                 >
-                  <Link to={item.path}>{item.title}</Link>
-                  {resourcesDropdown && (
-                    <ResourcesDropdown
-                      setTableState={setTableState}
-                      tableState={tableState}
-                    />
-                  )}
+                  <button>{item.title}</button>
+                  {showResourcesDropdown && <ResourcesDropdown />}
                 </li>
               );
             }
 
-            if (item.title === "Mobile") {
+            if (item.id === 3) {
               return (
-                <li key={item.id} className="nav-item" onClick={buttonClicked}>
-                  <Link to={item.path}>{item.title}</Link>
+                <li
+                  key={item.id}
+                  className="nav-item"
+                  onClick={handleMobileButtonClick}
+                >
+                  <button>{item.title}</button>
                 </li>
               );
             }

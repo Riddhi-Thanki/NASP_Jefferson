@@ -1,25 +1,34 @@
-import React, { useState } from "react";
-import { plotsDropdown } from "./NavItems";
+import React, { useState, useContext } from "react";
+import { directionDropdownItems } from "../../Data/Data";
 import { Link } from "react-router-dom";
 import "./DropdownItems.css";
+import { AppContext } from "../../App";
 
-const PlotsDropdown = ({ setPlotState }) => {
+const PlotsDropdown = () => {
+  // *****************************
+  // * Getting states from App
+  // *****************************
+  const { setDirectionState } = useContext(AppContext);
+
+  // *****************************
+  // * Component States
+  // *****************************
   const [dropdown, setDropdown] = useState(false);
+
   return (
     <>
       <ul className="plots-submenu" onClick={() => setDropdown(!dropdown)}>
-        {plotsDropdown.map((item) => {
+        {directionDropdownItems.map((item) => {
           return (
             <li key={item.id}>
               <Link
-                to={item.path}
                 className="submenu-item"
                 onClick={() => {
                   setDropdown(false);
-                  setPlotState(item.id);
+                  setDirectionState(item.id);
                 }}
               >
-                {item.title}
+                From the {item.title}
               </Link>
             </li>
           );

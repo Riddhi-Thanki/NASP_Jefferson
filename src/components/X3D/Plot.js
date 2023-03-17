@@ -1,35 +1,25 @@
 import React from "react";
 
-const Transform = ({ url }) => {
-  if (url === "./asset/Jefferson_Plot1_Center_Photosphere_Final.jpg") {
-    return null;
-  } else {
-    console.log("Transform called");
-    return (
-      <transform is="transform" DEF="dad_Box2" translation="0 -.05 0">
-        <shape is="shape" DEF="Box2" containerField="children">
-          <appearance is="appearance" containerField="appearance">
-            <material
-              is="material"
-              DEF="Shiny_White"
-              containerField="material"
-              ambientIntensity="0"
-              shininess="0"
-              transparency="1"
-              diffuseColor="0 0 0"
-              specularColor="1 1 1"
-            />
-          </appearance>
-          <box
-            is="box"
-            DEF="GeoBox2"
-            containerField="geometry"
-            size="50 .1 50"
+const Transform = () => {
+  return (
+    <transform is="transform" DEF="dad_Box2" translation="0 -.05 0">
+      <shape is="shape" DEF="Box2" containerField="children">
+        <appearance is="appearance" containerField="appearance">
+          <material
+            is="material"
+            DEF="Shiny_White"
+            containerField="material"
+            ambientIntensity="0"
+            shininess="0"
+            transparency="1"
+            diffuseColor="0 0 0"
+            specularColor="1 1 1"
           />
-        </shape>
-      </transform>
-    );
-  }
+        </appearance>
+        <box is="box" DEF="GeoBox2" containerField="geometry" size="50 .1 50" />
+      </shape>
+    </transform>
+  );
 };
 
 const Plot = ({ url, rotation }) => {
@@ -13779,7 +13769,7 @@ const Plot = ({ url, rotation }) => {
           </indexedFaceSet>
         </shape>
       </transform>
-      <Transform imageURL={url}></Transform>
+      <Transform></Transform>
     </scene>
   );
 };

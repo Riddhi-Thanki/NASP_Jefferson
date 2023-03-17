@@ -1,6 +1,6 @@
 {
   "name": "jefferson",
-  "homepage": "https://metagrid1.sv.vt.edu/~parthranawat/NASP_Jefferson/",
+  "homepage": "https://metagrid1.sv.vt.edu/~parthranawat/NASP_Jefferson",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -29,8 +29,7 @@
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
-    "web-vitals": "^2.1.4",
-    "x3dom": "^1.8.1"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,25 +1,34 @@
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
 import Plot from "./Plot";
 import Table from "../Table/Table";
-import plot1_centerURL from "./asset/Jefferson_Plot1_Center_Photosphere_Final.jpg";
-import plot1_southURL from "./asset/Jefferson_Plot1_South_Final.jpg";
-import plot1_eastURL from "./asset/Jefferson_Plot1_East_Final.jpg";
-import plot1_westURL from "./asset/Jefferson_Plot1_West_Final.jpg";
-import plot1_northURL from "./asset/Jefferson_Plot1_North_Final.jpg";
 import "./X3D.css";
+import { Data, plotRotation } from "../../Data/Data";
+import { AppContext } from "../../App";
 
-const X3D = ({ mobileView, plotState, tableState, setTableState }) => {
+const X3D = () => {
+  // *****************************
+  // * Getting states from App
+  // *****************************
+  const { plotId, mobileView, directionState } = useContext(AppContext);
+
+  // *****************************
+  // * Hooks
+  // *****************************
   const switchRef = useRef();
+
   useEffect(() => {
     window.x3dom.reload();
     bindMe();
   }, []);
 
   useEffect(() => {
-    shapeSwitch(plotState);
-  }, [plotState]);
+    shapeSwitch(directionState);
+  }, [directionState]);
 
+  // *****************************
+  // * Functions
+  // *****************************
   var runtime = null;
 
   function bindMe() {
@@ -39,9 +48,6 @@ const X3D = ({ mobileView, plotState, tableState, setTableState }) => {
 
   /* function added by sheeban for reference */
   function handleOrientation(event) {
-    console.log(event);
-    console.log("Inside handleOrientation");
-
     var V = document.getElementById("vp");
     var degtorad = Math.PI / 180; // Degree-to-Radian conversion
 
@@ -51,11 +57,9 @@ const X3D = ({ mobileView, plotState, tableState, setTableState }) => {
     var b = event.beta * degtorad;
     var c = event.gamma * degtorad;
 
-    console.log(a, b, c);
-    console.log("This is x3dom", window.x3dom);
+    // console.log("This is x3dom", window.x3dom);
 
     var q1 = window.x3dom.fields.Quaternion.prototype.setFromEuler(c, b, a);
-    console.log("q1", q1);
 
     var vector = new window.x3dom.fields.SFVec3f(1, 0, 0);
     var newmat = window.x3dom.fields.Quaternion.axisAngle(vector, -1.578);
@@ -73,8 +77,6 @@ const X3D = ({ mobileView, plotState, tableState, setTableState }) => {
   let is_running = false;
 
   const demo_button = function () {
-    console.log("It worked");
-
     //Request permission for iOS 13+ devices
     if (
       DeviceMotionEvent &&
@@ -171,15 +173,18 @@ const X3D = ({ mobileView, plotState, tableState, setTableState }) => {
           ></worldInfo>
 
           <switch is="switch" id="sphereSwitch" whichChoice="0" ref={switchRef}>
-            <Plot url={plot1_centerURL} rotation={"0 -1 0 0"}></Plot>
-            <Plot url={plot1_eastURL} rotation={"0 -1 0 3.1415"}></Plot>
-            <Plot url={plot1_westURL} rotation={"0 -1 0 3.1415"}></Plot>
-            <Plot url={plot1_northURL} rotation={"0 -1 0 3.1415"}></Plot>
-            <Plot url={plot1_southURL} rotation={"0 -1 0 3.1415"}></Plot>
+            <Plot
+              url={Data[plotId].center}
+              rotation={plotRotation.center}
+            ></Plot>
+            <Plot url={Data[plotId].east} rotation={plotRotation.east}></Plot>
+            <Plot url={Data[plotId].west} rotation={plotRotation.west}></Plot>
+            <Plot url={Data[plotId].north} rotation={plotRotation.north}></Plot>
+            <Plot url={Data[plotId].south} rotation={plotRotation.south}></Plot>
           </switch>
         </scene>
       </x3d>
-      <Table tableState={tableState} setTableState={setTableState}></Table>
+      <Table></Table>
     </div>
   );
 };

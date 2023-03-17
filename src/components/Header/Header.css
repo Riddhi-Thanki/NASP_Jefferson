@@ -36,16 +36,17 @@
   height: 8vh;
 }
 
-.nav-item a {
-  text-decoration: none;
+.nav-item button {
+  border: none;
   color: white;
   font-size: 120%;
   font-weight: 700;
   padding: 0.5rem 1rem;
-  border-radius: 8%;
+  border-radius: 5px;
+  background-color: transparent;
 }
 
-.nav-item a:hover {
+.nav-item button:hover {
   background: #e2b842;
   color: #000000;
 }
