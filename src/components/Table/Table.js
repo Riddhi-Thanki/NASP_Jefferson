@@ -1,5 +1,5 @@
 import "./Table.css";
-import { Data } from "../../Data/Data";
+import { Data, tableHeader } from "../../Data/Data";
 import { AppContext } from "../../App";
 import { useContext } from "react";
 
@@ -14,10 +14,10 @@ export default function Table() {
   }
   return (
     <div>
-      <table class="content-table">
+      <table className="content-table">
         <thead>
           <tr>
-            <td colspan={8}>
+            <td colSpan={8}>
               <button
                 className="button"
                 onClick={() => {
@@ -29,23 +29,15 @@ export default function Table() {
             </td>
           </tr>
           <tr>
-            <th>Tree #</th>
-            <th>Species</th>
-
-            <th>Class</th>
-            <th>DBH</th>
-            <th>Crown Class</th>
-            <th>Logs</th>
-            <th>Bolts</th>
-            <th>Height</th>
+            {tableHeader.map((title) => (
+              <th key={title}>{title}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {Data[plotId].tableData.map((row) => (
             <tr key={row.treeNumber}>
-              <td component="th" scope="row">
-                {row.treeNumber}
-              </td>
+              <td>{row.treeNumber}</td>
               <td>{row.species}</td>
               <td>{row.class}</td>
               <td>{row.dbh}</td>

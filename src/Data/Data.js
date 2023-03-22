@@ -64,6 +64,20 @@ import plot8_westURL from "./images/plot8/Jefferson_Plot8_West_Final.jpg";
 import plot8_northURL from "./images/plot8/Jefferson_Plot8_North_Final.jpg";
 
 // *****************************
+// * Table header
+// *****************************
+export const tableHeader = [
+  "Tree #",
+  "Species",
+  "Class",
+  "DBH",
+  "Crown Class",
+  "Logs",
+  "Bolts",
+  "Height",
+];
+
+// *****************************
 // * Table data for all plots
 // *****************************
 const plot1_data = [
@@ -1012,3 +1026,8 @@ export const resourcesDropdownItems = [
 // * Exporting Site Map Image
 // *****************************
 export const siteMapImage = siteMapFilePath;
+
+// ***********
+// * Exporting Project Name
+// ***********
+export const projectName = "Jefferson";

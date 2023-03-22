@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import PlotsDropdown from "./PlotsDropdown";
 import ResourcesDropdown from "./ResourcesDropdown";
 import { AppContext } from "../../App";
+import { projectName } from "../../Data/Data";
 
 const Header = () => {
   // *****************************
@@ -35,7 +36,7 @@ const Header = () => {
     <Router>
       <nav className="header">
         <div className="heading">
-          USFS Jefferson: Plot {plotId} (
+          USFS {projectName}: Plot {plotId} (
           {directionDropdownItems[directionState].title})
         </div>
 
